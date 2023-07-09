@@ -1,0 +1,55 @@
+<style>
+  h1 {
+    font-size: 50px;
+  }
+  input[type="radio"] {
+    margin: 20;
+    border: 0px;
+    width: 30%;
+    height: 3em;
+  }
+
+  button {
+    font-size: 50px;
+  }
+</style>
+<script>
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+  }
+</script>
+<form action="http://192.168.1.62:5000" method="POST">
+  <h1>upper limit</h1>
+  <input
+    id="upper"
+    name="upper"
+    type="number"
+    value="{{ upper }}"
+    step="0.1"
+    style="font-size: 45px"
+  />
+  <h1>lower limit</h1>
+  <input
+    id="lower"
+    name="lower"
+    type="number"
+    value="{{lower}}"
+    step="0.1"
+    style="font-size: 45px"
+  />
+  <br />
+  <input type="radio" id="on" name="active" value="on" {% if active == true %}
+  {{ "checked" }} {% endif %} />
+  <label for="on">ON</label><br />
+  <input type="radio" id="off" name="active" value="off" {% if active == false
+  %} {{ "checked" }} {% endif %} />
+  <label for="off">OFF</label><br />
+  <br />
+  <button>Save</button>
+</form>
+<iframe
+  title="graph"
+  width="100%"
+  height="60%"
+  src="http://192.168.1.62:3000/public-dashboards/0f6828c36f3746dd9d0a66d55eef9704?orgId=1&refresh=5s"
+/>
